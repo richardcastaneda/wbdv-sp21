@@ -13,3 +13,8 @@
 .center {
   text-align: center;
 }
+
+.rac-no-wrap{
+  overlfow: visible;
+  white-space: nowrap;
+}

@@ -11,6 +11,8 @@
         href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
         crossorigin="anonymous"/>
+  <link href="courselist.style.client.css"
+        rel="stylesheet"/>
 </head>
 <body>
 <!-- Navigation Bar -->
@@ -19,16 +21,16 @@
     <div class="col-1 center">
       <i class="fas fa-bars fa-2x"></i>
     </div>
-    <div class="col-2">
+    <div class="col-2.5  d-none d-lg-block rac-no-wrap">
       <h4>Course Manager</h4>
     </div>
-    <div class="col-7">
+    <div class="col-8">
       <input type="text"
              id="newCourseTitle"
              class="form-control"
              placeholder="New Course Title"/>
     </div>
-    <div class="col-1 center">
+    <div class="col-0.7 center rac-reduced-padding">
       <i class="fas fa-plus fa-2x"></i>
     </div>
   </div>
@@ -42,8 +44,8 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th class="hidden-sm-down">Owned By</th>
-      <th class="d-none d-sm-block">Last Modified</th>
+      <th class="d-none d-md-table-cell">Owned By</th>
+      <th class="d-none d-md-table-cell">Last Modified</th>
       <th></th>
     </tr>
   </thead>
@@ -52,11 +54,11 @@
       <td>
         <a href="../CourseEditor/courseeditor.template.client.html">
         <i class="fas fa-file"></i>
-        CS5610
+        CS5610 - Web Development
         </a>
       </td>
-      <td>Jannunzi</td>
-      <td>1/25/2021</td>
+      <td class="d-none d-md-table-cell">Jannunzi</td>
+      <td class="d-none d-md-table-cell">1/25/2021</td>
       <td>
         <i class="fas fa-trash"></i>
       </td>
@@ -65,11 +67,11 @@
       <td>
         <a href="../CourseEditor/courseeditor.template.client.html">
           <i class="fas fa-file"></i>
-          CS5610
+          CS4550 - Software Engineering (UG)
         </a>
       </td>
-      <td>Jannunzi</td>
-      <td>1/25/2021</td>
+      <td class="d-none d-md-table-cell">Jannunzi</td>
+      <td class="d-none d-md-table-cell">1/25/2021</td>
       <td><i class="fas fa-trash"></i>
       </td>
     </tr>
@@ -77,11 +79,11 @@
       <td>
         <a href="../CourseEditor/courseeditor.template.client.html">
           <i class="fas fa-file"></i>
-          CS5610
+          CS4500 Web Development (UG)
         </a>
       </td>
-      <td>Jannunzi</td>
-      <td>1/25/2021</td>
+      <td class="d-none d-md-table-cell">Jannunzi</td>
+      <td class="d-none d-md-table-cell">1/25/2021</td>
       <td><i class="fas fa-trash"></i>
       </td>
     </tr>
@@ -89,11 +91,11 @@
       <td>
         <a href="../CourseEditor/courseeditor.template.client.html">
           <i class="fas fa-file"></i>
-          CS5610
+          CS5200 - Intro to Databases
         </a>
       </td>
-      <td>Jannunzi</td>
-      <td>1/25/2021</td>
+      <td class="d-none d-md-table-cell">Jannunzi</td>
+      <td class="d-none d-md-table-cell">1/25/2021</td>
       <td><i class="fas fa-trash"></i>
       </td>
     </tr>
