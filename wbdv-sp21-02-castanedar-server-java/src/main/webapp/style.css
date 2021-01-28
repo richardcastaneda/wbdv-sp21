@@ -1,11 +1,15 @@
 .rac-sticky-nav-bar {
   background-color: skyblue;
-  padding: 50px;
+  padding: 10px;
   position: fixed;
   width: 100%;
   z-index: 1;
 }
 
 .container{
-  padding-top:58px;
+  padding-top:60px;
+}
+
+.center {
+  text-align: center;
 }
