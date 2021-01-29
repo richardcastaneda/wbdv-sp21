@@ -1,4 +1,4 @@
-.rac-sticky-nav-bar{
+.rac-background-color{
   background-color: #303030;
 }
 
@@ -12,11 +12,28 @@
 }
 
 .container{
-  padding-top:82px;
+  margin: 0;
+  padding: 0;
 }
 
+.rac-black-background-color{
+  padding: 35px;
+  background-color:black;
+}
 .rac-white{
   color: white;
+}
+
+.rac-white-background-color{
+  padding-top: 15px;
+  background-color: white;
+}
+
+.rac-pill-formatting{
+  margin: 10px;
+  background-color: #303030;
+  padding-bottom:15px;
+  padding-top: 15px;
 }
 
 .rac-vertical-align{
