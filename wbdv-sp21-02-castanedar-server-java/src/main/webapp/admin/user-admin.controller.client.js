@@ -1,15 +1,58 @@
-var users = [
-  {firstName: "Richard", username: "thiccyriccky", id:"253"},
-  {firstName: "Richrd", username: "thiccriccky", id:"253"},
-  {firstName: "Rihard", username: "thiccyricky", id:"253"},
-  {firstName: "Rihrd", username: "thiccyriccy", id:"253"},
-]
+//Create necessary variables
+var $createButton;
+var $tableRows;
+var $username;
+var $password;
+var $firstName;
+var $lastName;
+var $role;
+var selectedUser = null
+var userService = new AdminUserServiceClient()
+
+// deleteUser function deletes a user
+function deleteUser(event){
+    var button = $(event.target)
+    var index = button.attr("id")
+    console.log(index)
+    var id = users[index]._id
+    userService.deleteUser(id)
+      .then(function(status) {
+        users.splice(index, 1)
+        renderUsers(users)
+      })
+}
+
+function createUser(){
+    var newUser = {
+      username: $username.val(),
+      password: $password.val(),
+      firstName: $firstName.val(),
+      lastName: $lastName.val(),
+      role: $role.val()
+    }
+    userService.createUser(newUser)
+      .then(function(actualUser){
+        users.push(actualUser)
+        renderUsers(users)
+      })
+}
+
+function updateUser(event){
+  var id = $(event.target).attr("id")
+  selectedUser = users.find(user => user._id === id)
+  console.log(event)
+  $username.val(selectedUser.username)
+  $password.val(selectedUser.password)
+  $firstName.val(selectedUser.firstName)
+  $lastName.val(selectedUser.lastName)
+  $role.val(selectedUser.role)
+}
+
 function renderUsers(users) {
-  var tableRows = jQuery("#table-rows")
-  tableRows.empty()
+  $tableRows.empty()
   for(var i=0; i<users.length; i++) {
     var user = users[i]
-    tableRows
+    $tableRows
     .prepend(`
       <tr>
           <td>${user.username}</td>
@@ -19,110 +62,28 @@ function renderUsers(users) {
           <td>${user.Role}</td>
           <td>
             <span class="pull-right">
-            <button class="fa-2x fa fa-times wbdv-remove"></button>
-            <button class="fa-2x fa fa-pencil wbdv-edit"></button>
+            <button id="${i}" class="fa-2x fa fa-times wbdv-remove"></button>
+            <button id="${user._id}" class="fa-2x fa fa-pencil wbdv-edit"></button>
             </span>
           </td>
         </tr>`);
   }
+  $(".wbdv-remove").click(deleteUser)
+  $(".wbdv-edit").click(updateUser)
 }
 
-$(".wbdv-remove").click(function(){
-  alert("Delete Course")
-})
-
-var createBtn = $(".wbdv-create")
-createBtn.click(function(){
-  alert("create course")
-  var newUser = {
-    username: "username",
-    password: "password",
-    firstName: "First Name",
-    lastName: "Last Name",
-    role: "Role"
-  }
-  users.push(newUser)
-  renderUsers(users)
-})
-
-renderUsers(users)
-
-
-
-
-
-
-
-
-
-/*(function () {
-
-  const userService = new UserService();
-  const rowTemplate = jQuery('wbdv-template');
-  const tbody = jQuery('tbody');
-
-  jQuery(main);
-
-  function main() {
-    userService
-      .findAllUsers()
-      .then(renderUsers);
-
-  }
-
-  function renderUsers(users) {
-    for (const u in users) {
-      const user = users[u];
-      const rowClone = rowTemplate.clone();
-      rowClone.removeClass('wbdv-hidden');
-      rowClone.find('.wbdv-username').html(user.username);
-      tbody.append(rowClone);
-    }
-  }
-})()
-(function () {
-  var $usernameFld, $passwordFld;
-  var $firstNameFld, $lastNameFld, $roleFld;
-  var $removeBtn, $editBtn, $createBtn;
-  var $userRowTemplate, $tbody;
-  var userService = new AdminUserServiceClient();
-  var users = [
-    {firstName: "Richard", username: "thiccyriccky", id:"253"},
-    {firstName: "Richrd", username: "thiccriccky", id:"253"},
-    {firstName: "Rihard", username: "thiccyricky", id:"253"},
-    {firstName: "Rihrd", username: "thiccyriccy", id:"253"},
-  ]
-
-
-  function renderUsers(users) {
-    var tableRows = jQuery("#table-rows")
-    for(var i=0; i<users;i++){
-      var user = users[i]
-      tableRows.append(`
-        <tr>
-          <td>${user.username}</td>
-          <td>&nbsp;</td>
-          <td>${user.firstName}</td>
-          <td>Lovelace</td>
-          <td>${user.id}</td>
-          <td>
-            <span class="pull-right">
-            <i class="fa-2x fa fa-times wbdv-remove"></i>
-            <i class="fa-2x fa fa-pencil wbdv-edit"></i>
-            </span>
-          </td>
-        </tr>`);
-    }
-  }
-
-  function main() {
+function main(){
+  $tableRows = $("#table-rows")
+  $createButton = $(".wbdv-create")
+  $username = $("#usernameFld")
+  $password = $("#passwordFld")
+  $firstName = $("#firstNameFld")
+  $lastName = $("#lastNameFld")
+  $role = $("#roleFld")
+  $createButton.click(createUser)
+  users = userService.findAllUsers().then(function(actualUsers){
+    users = actualUsers
     renderUsers(users)
-  }
+  })
+}
 $(main)
-  function createUser() { … }
-  function deleteUser() { … }
-  function selectUser() { … }
-  function updateUser() { … }
-  function findAllUsers() { … } // optional - might not need this
-  function findUserById() { … } // optional - might not need this
-//})(); */
