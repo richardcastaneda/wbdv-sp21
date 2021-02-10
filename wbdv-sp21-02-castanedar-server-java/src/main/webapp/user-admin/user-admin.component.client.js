@@ -36,13 +36,21 @@ function createUser(){
         users.push(actualUser)
         renderUsers(users)
       })
-  //CLEAR FORM
+  clearForm()
+}
+/*clearForm function adapted from resource:
+"https://www.w3schools.com/jsref/prop_reset_value.asp"*/
+function clearForm(){
+  document.getElementById("usernameFld").value = ""
+  document.getElementById("passwordFld").value = ""
+  document.getElementById("firstNameFld").value = ""
+  document.getElementById("lastNameFld").value = ""
+  document.getElementById("roleFld").value = ""
 }
 
 function selectUser(event) {
   var id = $(event.target).attr("id")
   selectedUser = users.find(user => user._id === id)
-  console.log(event)
   $username.val(selectedUser.username)
   $password.val(selectedUser.password)
   $firstName.val(selectedUser.firstName)
@@ -62,18 +70,21 @@ function selectUser(event) {
       users[index] = selectedUser
       renderUsers(users)
     })
-    //CLEAR FORM
+    clearForm()
 }
 
 function renderUsers(users) {
   $tableRows.empty()
+  let asterisk = "*"
   for(var i=0; i<users.length; i++) {
     var user = users[i]
     $tableRows
     .prepend(`
       <tr>
           <td>${user.username}</td>
-          <td>&nbsp;</td>
+          <!--repeat function taken from resource
+          "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/repeat"-->
+          <td>${asterisk.repeat(user.password.length)}</td>
           <td>${user.firstName}</td>
           <td>${user.lastName}</td>
           <td>${user.role}</td>
