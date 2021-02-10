@@ -1,5 +1,6 @@
 //Create necessary variables
 var $createButton;
+var $updateButton;
 var $tableRows;
 var $username;
 var $password;
@@ -35,9 +36,10 @@ function createUser(){
         users.push(actualUser)
         renderUsers(users)
       })
+  //CLEAR FORM
 }
 
-function updateUser(event){
+function selectUser(event) {
   var id = $(event.target).attr("id")
   selectedUser = users.find(user => user._id === id)
   console.log(event)
@@ -46,6 +48,21 @@ function updateUser(event){
   $firstName.val(selectedUser.firstName)
   $lastName.val(selectedUser.lastName)
   $role.val(selectedUser.role)
+}
+
+  function updateUser() {
+  selectedUser.username = $username.val()
+    selectedUser.password = $password.val()
+    selectedUser.firstName = $firstName.val()
+    selectedUser.lastName = $lastName.val()
+    selectedUser.role = $role.val()
+  userService.updateUser(selectedUser._id, selectedUser)
+    .then(status => {
+      var index = users.findIndex(user => user._id === selectedUser)
+      users[index] = selectedUser
+      renderUsers(users)
+    })
+    //CLEAR FORM
 }
 
 function renderUsers(users) {
@@ -59,7 +76,7 @@ function renderUsers(users) {
           <td>&nbsp;</td>
           <td>${user.firstName}</td>
           <td>${user.lastName}</td>
-          <td>${user.Role}</td>
+          <td>${user.role}</td>
           <td>
             <span class="pull-right">
             <button id="${i}" class="fa-2x fa fa-times wbdv-remove"></button>
@@ -69,17 +86,19 @@ function renderUsers(users) {
         </tr>`);
   }
   $(".wbdv-remove").click(deleteUser)
-  $(".wbdv-edit").click(updateUser)
+  $(".wbdv-edit").click(selectUser)
 }
 
 function main(){
   $tableRows = $("#table-rows")
   $createButton = $(".wbdv-create")
+  $updateButton = $(".wbdv-update")
   $username = $("#usernameFld")
   $password = $("#passwordFld")
   $firstName = $("#firstNameFld")
   $lastName = $("#lastNameFld")
   $role = $("#roleFld")
+  $updateButton.click(updateUser)
   $createButton.click(createUser)
   users = userService.findAllUsers().then(function(actualUsers){
     users = actualUsers
