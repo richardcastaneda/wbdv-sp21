@@ -1,9 +1,18 @@
-/*package com.example.wbdvsp2102castanedarserverjava.models;
+package com.example.wbdvsp2102castanedarserverjava.models;
 
 public class User {
   private long id;
   private String username;
   private String firstName;
+  private String lastName;
+
+  public String getLastName() {
+    return lastName;
+  }
+
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
 
   public void setId(long id) {
     this.id = id;
@@ -29,14 +38,14 @@ public class User {
     return firstName;
   }
 
-  public User(long id, String username, String firstName) {
+  public User(String username, String firstName, String lastName, String Role) {
     this.id = id;
     this.username = username;
     this.firstName = firstName;
+    this.lastName = lastName;
   }
    public User(){
 
    }
 
 }
-*/

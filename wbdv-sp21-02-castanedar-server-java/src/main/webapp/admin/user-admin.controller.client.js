@@ -6,24 +6,44 @@ var users = [
 ]
 function renderUsers(users) {
   var tableRows = jQuery("#table-rows")
+  tableRows.empty()
   for(var i=0; i<users.length; i++) {
     var user = users[i]
-    tableRows.append(`
+    tableRows
+    .prepend(`
       <tr>
           <td>${user.username}</td>
           <td>&nbsp;</td>
           <td>${user.firstName}</td>
-          <td>Lovelace</td>
-          <td>${user.id}</td>
+          <td>${user.lastName}</td>
+          <td>${user.Role}</td>
           <td>
             <span class="pull-right">
-            <i class="fa-2x fa fa-times wbdv-remove"></i>
-            <i class="fa-2x fa fa-pencil wbdv-edit"></i>
+            <button class="fa-2x fa fa-times wbdv-remove"></button>
+            <button class="fa-2x fa fa-pencil wbdv-edit"></button>
             </span>
           </td>
         </tr>`);
   }
 }
+
+$(".wbdv-remove").click(function(){
+  alert("Delete Course")
+})
+
+var createBtn = $(".wbdv-create")
+createBtn.click(function(){
+  alert("create course")
+  var newUser = {
+    username: "username",
+    password: "password",
+    firstName: "First Name",
+    lastName: "Last Name",
+    role: "Role"
+  }
+  users.push(newUser)
+  renderUsers(users)
+})
 
 renderUsers(users)
 

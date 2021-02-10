@@ -1,4 +1,4 @@
-/*package com.example.wbdvsp2102castanedarserverjava.controller;
+package com.example.wbdvsp2102castanedarserverjava.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,14 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
   static List<User> users = new ArrayList<>();
   static {
-    users.add(new User(123, "alice", "Alice"));
-    users.add(new User(669, "bob", "Bob"));
-    users.add(new User(425, "dan", "Dan"));
-    users.add(new User(206, "charlie", "Charlie"));
-    users.add(new User(253, "isa", "Isa"));
+    users.add(new User("tlee","Tim","Lee","FACULTY"));
+    users.add(new User("alovelace","Alice","Lovelace","FACULTY"));
+    users.add(new User("cgarcia", "Charlie","Garcia","STUDENT"));
+    users.add(new User("dcraig","Dan","Craig","STUDENT"));
+    users.add(new User("sbolivar","Simon", "Bolivar","FACULTY"));
+    users.add(new User("izzysb","Israel", "Sanchez-Blanco","Student"));
   }
   @GetMapping("/users")
   public List<User> findAllUsers() {
     return users;
   }
-}*/
+}
