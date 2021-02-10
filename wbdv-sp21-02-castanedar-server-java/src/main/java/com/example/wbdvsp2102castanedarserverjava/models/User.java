@@ -1,4 +1,4 @@
-package com.example.wbdvsp2102castanedarserverjava.models;
+/*package com.example.wbdvsp2102castanedarserverjava.models;
 
 public class User {
   private long id;
@@ -39,3 +39,4 @@ public class User {
    }
 
 }
+*/

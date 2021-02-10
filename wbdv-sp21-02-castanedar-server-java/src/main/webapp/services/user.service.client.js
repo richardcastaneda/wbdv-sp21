@@ -1,4 +1,4 @@
-function UserService(){
+/*function UserService(){
 
   this.findAllUsers = findAllUsers();
 
@@ -8,4 +8,4 @@ function UserService(){
       return response.json();
     })
   }
-}
+*/
