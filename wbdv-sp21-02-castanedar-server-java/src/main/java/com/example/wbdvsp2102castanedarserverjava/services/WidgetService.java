@@ -37,7 +37,7 @@ public class WidgetService {
         widgets.set(index, widget);
         return 1;
       } else {
-        return -1;
+        return 0;
       }
     }
     return 0;
@@ -61,6 +61,6 @@ public class WidgetService {
         break;
       }
     }
-    return -1;
+    return 0;
   }
 }
