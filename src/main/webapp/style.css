@@ -1,0 +1,20 @@
+.rac-sticky-nav-bar {
+  background-color: skyblue;
+  padding: 10px;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+.container{
+  padding-top:60px;
+}
+
+.center {
+  text-align: center;
+}
+
+.rac-no-wrap{
+  overlfow: visible;
+  white-space: nowrap;
+}
