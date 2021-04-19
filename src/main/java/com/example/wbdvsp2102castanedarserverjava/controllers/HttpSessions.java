@@ -12,7 +12,7 @@ public class HttpSessions {
   //@GetMapping("/api/session/set/{attr}/{value}")
 
   List<User> users = new ArrayList<User>();
-  @GetMapping("/api/register/{username}/{password}")
+  @GetMapping("/api/users/register/{username}/{password}")
   public User register(
       @PathVariable("username") String username,
       @PathVariable("password") String password,
@@ -25,7 +25,7 @@ public class HttpSessions {
     return user;
   }
 
-  @GetMapping("/api/profile")
+  @GetMapping("/api/users/profile")
   public User profile(HttpSession session) {
     User currentUser = (User)
     session.getAttribute("currentUser");
